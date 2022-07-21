@@ -17,17 +17,23 @@ module.exports = {
         {
           email: 'John Doe',
           password: '123',
-          username: 'fake11'
+          username: 'fake11',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           email: 'John Doe2',
           password: '123',
-          username: 'fake12'
+          username: 'fake12',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         },
         {
           email: 'John Doe3',
           password: '123',
-          username: 'fake13'
+          username: 'fake13',
+          createdAt: new Date(),
+          updatedAt: new Date(),
         }
       ], {});
   },
