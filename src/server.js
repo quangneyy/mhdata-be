@@ -3,6 +3,8 @@ import configViewEngine from './config/viewEngine';
 import initWebRoutes from './routes/web';
 import initApiRoutes from './routes/api';
 import configCors from './config/cors';
+import { initTables } from './service/initDatabaseService';
+
 require("dotenv").config();
 import bodyParser from 'body-parser';
 // import connection from './config/connectDB';
@@ -27,6 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 initWebRoutes(app);
 initApiRoutes(app);
 
-app.listen(PORT, () => {
-    console.log(">>> JWT Backend is running on the port = " + PORT);
+//init sample data for database
+initTables().then(() => {
+    app.listen(PORT, () => {
+        console.log(">>> Service Backend Node.js is running on the port = " + PORT);
+    })
+}).catch(err => {
+    console.log(">>> CAN NOT START APP, ERROR DURING INIT DATABASE TABLES...");
+    console.log(err);
 });
