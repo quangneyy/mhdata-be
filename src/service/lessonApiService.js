@@ -1,18 +1,13 @@
 import db from '../models/index';
 
-const getAllUser = async () => {
+const getAllLesson = async () => {
     try {
-        let users = await db.User.findAll(
-            // {
-            //     attributes: ["id", "username", "email", "phone" ],
-            //     include: { model: db.Group },
-            // }
-        );
-        if (users) {
+        let lesson = await db.Lesson.findAll();
+        if (lesson) {
             return {
                 EM: 'get data success',
                 EC: 0,
-                DT: users
+                DT: lesson
             }
         } else {
             return {
@@ -31,11 +26,11 @@ const getAllUser = async () => {
     }
 }
 
-const getUserWithPagination = async (page, limit) => {
+const getLessonWithPagination = async (page, limit) => {
     try {
         let offset = (page - 1) * limit;
 
-        const { count, rows } = await db.User.findAndCountAll({
+        const { count, rows } = await db.Lesson.findAndCountAll({
             offset: offset,
             limit: limit,
         })
@@ -44,7 +39,7 @@ const getUserWithPagination = async (page, limit) => {
         let data = {
             totalRows: count,
             totalPages: totalPages,
-            users: rows
+            courses: rows
         }
 
         return {
@@ -63,17 +58,17 @@ const getUserWithPagination = async (page, limit) => {
     }
 }
 
-const createNewUser = async (data) => {
+const createNewLesson = async (data) => {
     try {
-        await db.User.create(data);
+        await db.Lesson.create(data);
     } catch (e) {
         console.log(e);
     }
 }
 
-const updateUser = async (data) => {
+const updateLesson = async (data) => {
     try {
-        let user = await db.User.findOne({
+        let user = await db.Lesson.findOne({
             where: { id: data.id }
         })
         if (user) {
@@ -89,9 +84,9 @@ const updateUser = async (data) => {
     }
 }
 
-const deleteUser = async (id) => {
+const deleteLesson = async (id) => {
     try {
-        await db.User.deleteUser({
+        await db.Lesson.delete({
             where: { id: id }
         })
 
@@ -101,9 +96,9 @@ const deleteUser = async (id) => {
 }
 
 module.exports = {
-    getAllUser,
-    createNewUser,
-    updateUser,
-    deleteUser,
-    getUserWithPagination
+    getAllLesson,
+    getLessonWithPagination,
+    createNewLesson,
+    updateLesson,
+    deleteLesson
 }

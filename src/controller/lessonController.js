@@ -1,4 +1,4 @@
-import coursesApiService from '../service/coursesApiService';
+import lessonApiService from '../service/lessonApiService';
 
 const readFunc = async (req, res) => {
     try {
@@ -6,14 +6,14 @@ const readFunc = async (req, res) => {
             let page = req.query.page;
             let limit = req.query.limit;
 
-            let data = await coursesApiService.getCoursesWithPagination(+page, +limit);
+            let data = await lessonApiService.getLessonWithPagination(+page, +limit);
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code
                 DT: data.DT, //data
             })
         } else {
-            let data = await coursesApiService.getAllCourses();
+            let data = await lessonApiService.getAllLesson();
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code

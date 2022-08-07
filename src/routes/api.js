@@ -18,6 +18,14 @@ const initApiRoutes = (app) => {
     router.delete("/user/delete", userController.deleteFunc); 
 
     router.get("/courses/read", coursesController.readFunc);
+    router.post("/courses/create", coursesController.createFunc);
+    router.put("/courses/update", coursesController.updateFunc);
+    router.delete("/courses/delete", coursesController.deleteFunc);
+
+    router.get("/lesson/read", coursesController.readFunc);
+    router.post("/lesson/create", coursesController.createFunc);
+    router.put("/lesson/update", coursesController.updateFunc);
+    router.delete("/lesson/delete", coursesController.deleteFunc);
 
     return app.use("/api/v1/", router);
 }

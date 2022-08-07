@@ -45,7 +45,6 @@ const handleRegister = async (req, res) => {
 
 const handleLogin = async (req, res) => {
     try {
-
         let data = await loginRegisterService.handleUserLogin(req.body);
         console.log(req.body);
         return res.status(200).json({

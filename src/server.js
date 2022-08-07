@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 initWebRoutes(app);
 initApiRoutes(app);
 
-//init sample data for database
+// init sample data for database
 initTables().then(() => {
     app.listen(PORT, () => {
         console.log(">>> Service Backend Node.js is running on the port = " + PORT);
@@ -38,3 +38,4 @@ initTables().then(() => {
     console.log(">>> CAN NOT START APP, ERROR DURING INIT DATABASE TABLES...");
     console.log(err);
 });
+

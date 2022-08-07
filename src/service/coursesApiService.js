@@ -58,7 +58,47 @@ const getCoursesWithPagination = async (page, limit) => {
     }
 }
 
+const createNewCourses = async (data) => {
+    try {
+        await db.User.create(data);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const updateCourses = async (data) => {
+    try {
+        let user = await db.User.findOne({
+            where: { id: data.id }
+        })
+        if (user) {
+            //update
+            user.save({
+                
+            })
+        } else {
+            //not found
+        }
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const deleteCourses = async (id) => {
+    try {
+        await db.User.delete({
+            where: { id: id }
+        })
+
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 module.exports = {
     getAllCourses,
     getCoursesWithPagination,
+    createNewCourses,
+    updateCourses,
+    deleteCourses,
 }
