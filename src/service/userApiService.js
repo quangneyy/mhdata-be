@@ -2,7 +2,12 @@ import db from '../models/index';
 
 const getAllUser = async () => {
     try {
-        let users = await db.User.findAll();
+        let users = await db.User.findAll(
+            // {
+            // attributes: ["id", "username", "email", "phone" ],
+            // include: {model: db.Group, attributes: ["name", "description"], },
+            // }
+        );
         if (users) {
             return {
                 EM: 'get data success',
