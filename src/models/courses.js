@@ -13,14 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   };
+
   // object relational mapping
   Courses.init({
     name: DataTypes.STRING,
     author: DataTypes.STRING,
     time: DataTypes.STRING,
-    image: DataTypes.BLOB,
-    video: DataTypes.BLOB,
+    image: DataTypes.STRING,
     dateUpload: DataTypes.STRING,
+    lessonId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Courses',

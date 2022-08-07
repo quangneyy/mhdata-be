@@ -7,8 +7,6 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
-        createdAt: new Date(),
-        updatedAt: new Date(),
       },
       
       name: {
@@ -21,22 +19,13 @@ module.exports = {
         type: Sequelize.STRING,
       },
       image: {
-        type: Sequelize.BLOB,
-      },
-      video: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       dateUpload: {
         type: Sequelize.STRING,
       },
-
-      createdAt: {
-        allowNull: true,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: true,
-        type: Sequelize.DATE
+      lessonId: {
+        type: Sequelize.INTEGER,
       }
     });
   },
