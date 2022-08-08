@@ -96,7 +96,7 @@ const handleUserLogin = async (rawData) => {
                 return {
                     EM: 'ok!',
                     EC: 0,
-                    DT: ''
+                    DT: user
                 }
             }
         } 
