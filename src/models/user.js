@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      User.belongsTo(models.Group);
+
       // define association here
     }
   };
@@ -19,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     username: DataTypes.STRING,
     phone: DataTypes.STRING,
-    groupId: DataTypes.INTEGER,
-  }, {
+    groupId: DataTypes.INTEGER
+    }, {
     sequelize,
     modelName: 'User',
   });
