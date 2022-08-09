@@ -39,7 +39,7 @@ const getLessonWithPagination = async (page, limit) => {
         let data = {
             totalRows: count,
             totalPages: totalPages,
-            courses: rows
+            lesson: rows
         }
 
         return {
