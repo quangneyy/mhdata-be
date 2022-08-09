@@ -17,13 +17,10 @@ module.exports = {
       coursesId: {
         type: Sequelize.INTEGER,
       },
-      dateStudent: {
+      comment: {
         type: Sequelize.STRING,
       },
-      desc: {
-        type: Sequelize.STRING,
-      },
-      evaluateId: {
+      numberStar: {
         type: Sequelize.INTEGER,
       },
 

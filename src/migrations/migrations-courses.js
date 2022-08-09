@@ -24,8 +24,17 @@ module.exports = {
       dateUpload: {
         type: Sequelize.STRING,
       },
-      lessonId: {
+      categoryId: {
         type: Sequelize.INTEGER,
+      },
+
+      createdAt: {
+        allowNull: true,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
       }
     });
   },

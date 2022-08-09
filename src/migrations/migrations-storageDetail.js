@@ -20,9 +20,6 @@ module.exports = {
       dateSave: {
         type: Sequelize.STRING,
       },
-      favouriteListId: {
-        type: Sequelize.INTEGER,
-      },
 
 
       createdAt: {

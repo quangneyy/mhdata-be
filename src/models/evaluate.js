@@ -10,13 +10,16 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Evaluate.belongsTo(model.User);
+
       // define association here
     }
   };
   // object relational mapping
   Evaluate.init({
-    ratingRate: DataTypes.STRING,
+    averageRating: DataTypes.FLOAT,
     numberReviews: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Evaluate',

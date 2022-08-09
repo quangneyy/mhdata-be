@@ -11,10 +11,13 @@ module.exports = {
         updatedAt: new Date(),
       },
       
-      ratingRate: {
-        type: Sequelize.STRING,
+      averageRating: {
+        type: Sequelize.FLOAT,
       },
       numberReviews: {
+        type: Sequelize.INTEGER,
+      },
+      userId: {
         type: Sequelize.INTEGER,
       },
 

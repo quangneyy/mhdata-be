@@ -10,6 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      StorageDetail.belongsTo(model.User);
+      StorageDetail.belongsTo(model.Courses);
+
       // define association here
     }
   };
@@ -18,7 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     coursesId: DataTypes.INTEGER,
     dateSave: DataTypes.STRING,
-    favouriteListId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'StorageDetail',

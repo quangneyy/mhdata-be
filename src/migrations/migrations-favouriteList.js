@@ -14,6 +14,9 @@ module.exports = {
       coursesNumber: {
         type: Sequelize.INTEGER,
       },
+      userId: {
+        type: Sequelize.INTEGER,
+      },
 
       createdAt: {
         allowNull: true,

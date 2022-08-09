@@ -10,6 +10,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      FavouriteList.belongsTo(models.User);
+
       // define association here
     }
   };
@@ -17,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   // object relational mapping
   FavouriteList.init({
     coursesNumber: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'FavouriteList',
