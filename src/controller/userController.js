@@ -49,7 +49,7 @@ const createFunc = async (req, res) => {
     }
 }
 
-const updateFunc = (req, res) => {
+const updateFunc = async (req, res) => {
     try {
         // validate 
         let data = await userApiService.updateUser(req.body);
