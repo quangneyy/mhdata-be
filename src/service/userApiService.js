@@ -108,7 +108,8 @@ const updateUser = async (data) => {
         if (user) {
             //update
             await user.update({
-                username: data.username, 
+                username: data.username,
+                email: data.email, 
                 phone: data.phone,
                 password: data.password,
             })
