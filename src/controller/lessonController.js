@@ -30,7 +30,7 @@ const readFunc = async (req, res) => {
     }
 }
 
-const createFunc = (req, res) => {
+const createFunc = async (req, res) => {
     try {
         // validate 
         let data = await lessonApiService.createNewLesson(req.body);

@@ -2,6 +2,7 @@ import express from 'express';
 import apiController from '../controller/apiController';
 import userController from '../controller/userController';
 import coursesController from '../controller/coursesController';
+import lessonController from '../controller/lessonController';
 const router = express.Router();
 
 const initApiRoutes = (app) => {
@@ -22,10 +23,10 @@ const initApiRoutes = (app) => {
     router.put("/courses/update", coursesController.updateFunc);
     router.delete("/courses/delete", coursesController.deleteFunc);
 
-    router.get("/lesson/read", coursesController.readFunc);
-    router.post("/lesson/create", coursesController.createFunc);
-    router.put("/lesson/update", coursesController.updateFunc);
-    router.delete("/lesson/delete", coursesController.deleteFunc);
+    router.get("/lesson/read", lessonController.readFunc);
+    router.post("/lesson/create", lessonController.createFunc);
+    router.put("/lesson/update", lessonController.updateFunc);
+    router.delete("/lesson/delete", lessonController.deleteFunc);
 
     return app.use("/api/v1/", router);
 }

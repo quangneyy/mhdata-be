@@ -68,12 +68,12 @@ const createNewLesson = async (data) => {
 
 const updateLesson = async (data) => {
     try {
-        let user = await db.Lesson.findOne({
+        let lesson = await db.Lesson.findOne({
             where: { id: data.id }
         })
-        if (user) {
+        if (lesson) {
             //update
-            user.save({
+            lesson.save({
                 
             })
         } else {
