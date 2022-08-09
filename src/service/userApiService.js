@@ -108,6 +108,7 @@ const updateUser = async (data) => {
         if (user) {
 
             let hashPassword = hashUserPassword(data.password);
+            console.log(hashPassword);
 
             //update
             await user.update({
