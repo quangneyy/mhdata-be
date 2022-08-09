@@ -60,7 +60,7 @@ const getCoursesWithPagination = async (page, limit) => {
 
 const createNewCourses = async (data) => {
     try {
-        await db.User.create(data);
+        await db.Courses.create(data);
     } catch (e) {
         console.log(e);
     }
@@ -68,7 +68,7 @@ const createNewCourses = async (data) => {
 
 const updateCourses = async (data) => {
     try {
-        let user = await db.User.findOne({
+        let user = await db.Courses.findOne({
             where: { id: data.id }
         })
         if (user) {
@@ -86,12 +86,32 @@ const updateCourses = async (data) => {
 
 const deleteCourses = async (id) => {
     try {
-        await db.User.delete({
+        let courses = await db.Courses.findOne({
             where: { id: id }
         })
 
+        if (courses) {
+            await courses.destroy();
+            return {
+                EM: 'Delete courses succeeds',
+                EC: 0,
+                DT: []
+            }
+        } else {
+            return {
+                EM: 'Courses not exist',
+                EC: 2,
+                DT: data
+            }
+        }
+
     } catch (e) {
         console.log(e);
+        return {
+            EM: 'error from service',
+            EC: 1,
+            DT: []
+        }
     }
 }
 

@@ -104,8 +104,6 @@ const updateUser = async (data) => {
             //update
             await user.update({
                 username: data.username, 
-                address: data.address, 
-                sex: data.sex, 
             })
 
             return { 

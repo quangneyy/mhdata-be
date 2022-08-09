@@ -32,7 +32,13 @@ const readFunc = async (req, res) => {
 
 const createFunc = (req, res) => {
     try {
-
+        // validate 
+        let data = await lessonApiService.createNewLesson(req.body);
+        return res.status(200).json({
+            EM: data.EM, // error message
+            EC: data.EC, // error code 
+            DT: data.DT, // data
+        })
     } catch (error) {
         console.log(error);
         return res.status(500).json({
@@ -56,15 +62,20 @@ const updateFunc = (req, res) => {
     }
 }
 
-const deleteFunc = (req, res) => {
+const deleteFunc = async (req, res) => {
     try {
-
+        let data = await lessonApiService.deleteLesson(req.body.id);
+        return res.status(200).json({
+            EM: data.EM, // error message
+            EC: data.EC, // error code
+            DT: data.DT, // data
+        })
     } catch (error) {
         console.log(error);
         return res.status(500).json({
             EM: 'error from server', // error message
             EC: '-1', //error code 
-            DT: '', // data
+            DT: '', // date
         })
     }
 }

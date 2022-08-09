@@ -86,12 +86,32 @@ const updateLesson = async (data) => {
 
 const deleteLesson = async (id) => {
     try {
-        await db.Lesson.delete({
+        let lesson = await db.Lesson.findOne({
             where: { id: id }
         })
 
+        if (lesson) {
+            await lesson.destroy();
+            return {
+                EM: 'Delete user succeeds',
+                EC: 0,
+                DT: []
+            }
+        } else {
+            return {
+                EM: 'User not exist',
+                EC: 2,
+                DT: data
+            }
+        }
+
     } catch (e) {
         console.log(e);
+        return {
+            EM: 'error from service',
+            EC: 1,
+            DT: []
+        }
     }
 }
 
