@@ -106,12 +106,15 @@ const updateUser = async (data) => {
             where: { id: data.id }
         })
         if (user) {
+
+            let hashPassword = hashUserPassword(data.password);
+
             //update
             await user.update({
                 username: data.username,
                 email: data.email, 
                 phone: data.phone,
-                password: data.password,
+                password: hashPassword,
             })
 
             return { 
