@@ -17,7 +17,13 @@ module.exports = {
       numberReviews: {
         type: Sequelize.INTEGER,
       },
+      comment: {
+        type: Sequelize.STRING(1234),
+      },
       userId: {
+        type: Sequelize.INTEGER,
+      },
+      coursesId: {
         type: Sequelize.INTEGER,
       },
 

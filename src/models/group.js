@@ -11,14 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Group.hasMany(models.User);
-
       // define association here
     }
   };
   // object relational mapping
   Group.init({
     name: DataTypes.STRING,
-    description: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Group',

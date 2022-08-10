@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       video: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(1234),
       },
       coursesId: {
         type: Sequelize.INTEGER,

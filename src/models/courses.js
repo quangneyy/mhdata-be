@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      Courses.hasMany(models.Evaluate);
+      
       Courses.hasMany(models.Lesson);
-
-      Courses.hasMany(models.CoursesDetail);
 
       Courses.belongsTo(models.Category);
 
-      Courses.hasMany(models.StorageDetail);
+      Courses.belongsToMany(models.FavouriteList, { through: 'StorageDetail' })
       // define association here
     }
   };
@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     author: DataTypes.STRING,
     time: DataTypes.STRING,
-    image: DataTypes.STRING,
+    image: DataTypes.STRING(1234),
     dateUpload: DataTypes.STRING,
     categoryId: DataTypes.INTEGER,
   }, { 

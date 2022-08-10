@@ -17,6 +17,9 @@ module.exports = {
       coursesId: {
         type: Sequelize.INTEGER,
       },
+      favouriteListId: {
+        type: Sequelize.INTEGER,
+      },
       dateSave: {
         type: Sequelize.STRING,
       },

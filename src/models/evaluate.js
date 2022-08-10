@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Evaluate.belongsTo(models.User);
+      Evaluate.belongsTo(models.Courses);
 
       // define association here
     }
@@ -19,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
   Evaluate.init({
     averageRating: DataTypes.FLOAT,
     numberReviews: DataTypes.INTEGER,
+    comments: DataTypes.STRING(1234),
     userId: DataTypes.INTEGER,
+    coursesId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Evaluate',
