@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       FavouriteList.belongsTo(models.User);
 
-      FavouriteList.belongsToMany(models.Courses, { through: 'StorageDetail' });
+      FavouriteList.belongsToMany(models.Course, { through: 'StorageDetail' });
       // define association here
     }
   };

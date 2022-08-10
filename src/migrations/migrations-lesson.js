@@ -11,13 +11,13 @@ module.exports = {
         updatedAt: new Date(),
       },
       
-      name: {
+      nameLesson: {
         type: Sequelize.STRING,
       },
       video: {
         type: Sequelize.STRING(1234),
       },
-      coursesId: {
+      courseId: {
         type: Sequelize.INTEGER,
       },
 

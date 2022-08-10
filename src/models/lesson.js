@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Lesson.belongsTo(models.Courses);
+      Lesson.belongsTo(models.Course);
       // define association here
     }
   };
   // object relational mapping
   Lesson.init({
-    name: DataTypes.STRING,
+    nameLesson: DataTypes.STRING,
     video: DataTypes.STRING(1234),
-    coursesId: DataTypes.INTEGER,
+    courseId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Lesson',

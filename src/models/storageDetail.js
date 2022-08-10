@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   // object relational mapping
   StorageDetail.init({
     userId: DataTypes.INTEGER,
-    coursesId: DataTypes.INTEGER,
+    courseId: DataTypes.INTEGER,
     favouriteListId: DataTypes.INTEGER,
     dateSave: DataTypes.STRING,
   }, {

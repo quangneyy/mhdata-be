@@ -14,7 +14,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
       },
-      coursesId: {
+      courseId: {
         type: Sequelize.INTEGER,
       },
       favouriteListId: {

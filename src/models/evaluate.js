@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Evaluate.belongsTo(models.User);
-      Evaluate.belongsTo(models.Courses);
+      Evaluate.belongsTo(models.Course);
 
       // define association here
     }
@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     numberReviews: DataTypes.INTEGER,
     comments: DataTypes.STRING(1234),
     userId: DataTypes.INTEGER,
-    coursesId: DataTypes.INTEGER,
+    courseId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Evaluate',

@@ -1,18 +1,25 @@
 import db from '../models/index';
 
-const getAllLesson = async () => {
+const getAllEvaluate = async () => {
     try {
-        let lesson = await db.Lesson.findAll(
+        let evaluate = await db.Evaluate.findAll(
             {
-                attributes: ["id", "nameLesson", "video"],
+                attributes: ["id", "averageRating", "numberReviews", "comments"],
+                include: [{ model: db.User, attributes: ["username", "email"] }, 
+                { model: db.Course, attributes: ["name", "author"] }],
+                // include: { model: db.Course, attributes: ["name", "author"] },
+            },
+            {
+                attributes: ["id", "averageRating", "numberReviews", "comments"],
+                // include: { model: db.User, attributes: ["username", "email"] },
                 include: { model: db.Course, attributes: ["name", "author"] },
             }
         );
-        if (lesson) {
+        if (evaluate) {
             return {
                 EM: 'get data success',
                 EC: 0,
-                DT: lesson,
+                DT: evaluate
             }
         } else {
             return {
@@ -31,20 +38,23 @@ const getAllLesson = async () => {
     }
 }
 
-const getLessonWithPagination = async (page, limit) => {
+const getEvaluateWithPagination = async (page, limit) => {
     try {
         let offset = (page - 1) * limit;
 
-        const { count, rows } = await db.Lesson.findAndCountAll({
+        const { count, rows } = await db.Evaluate.findAndCountAll({
             offset: offset,
             limit: limit,
+            // attributes: ["id", "username", "email", "phone", "sex"],
+            // include: { model: db.Group, attributes: ["name", "description"] },
+            // order: [['name', 'DESC']]
         })
 
         let totalPages = Math.ceil(count / limit);
         let data = {
             totalRows: count,
             totalPages: totalPages,
-            lesson: rows
+            evaluate: rows
         }
 
         return {
@@ -63,48 +73,30 @@ const getLessonWithPagination = async (page, limit) => {
     }
 }
 
-const createNewLesson = async (data) => {
+const createNewEvaluate = async (data) => {
     try {
-        await db.Lesson.create(data);
+        await db.Evaluate.create(data);
     } catch (e) {
         console.log(e);
     }
 }
 
-const updateLesson = async (data) => {
+const deleteEvaluate = async (id) => {
     try {
-        let lesson = await db.Lesson.findOne({
-            where: { id: data.id }
-        })
-        if (lesson) {
-            //update
-            lesson.save({
-                
-            })
-        } else {
-            //not found
-        }
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-const deleteLesson = async (id) => {
-    try {
-        let lesson = await db.Lesson.findOne({
+        let evaluate = await db.Evaluate.findOne({
             where: { id: id }
         })
 
-        if (lesson) {
-            await lesson.destroy();
+        if (evaluate) {
+            await evaluate.destroy();
             return {
-                EM: 'Delete user succeeds',
+                EM: 'Delete evaluate succeeds',
                 EC: 0,
                 DT: []
             }
         } else {
             return {
-                EM: 'User not exist',
+                EM: 'Evaluate not exist',
                 EC: 2,
                 DT: data
             }
@@ -121,9 +113,8 @@ const deleteLesson = async (id) => {
 }
 
 module.exports = {
-    getAllLesson,
-    getLessonWithPagination,
-    createNewLesson,
-    updateLesson,
-    deleteLesson
+    getAllEvaluate,
+    createNewEvaluate,
+    deleteEvaluate,
+    getEvaluateWithPagination,
 }

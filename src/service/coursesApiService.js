@@ -1,13 +1,13 @@
 import db from '../models/index';
 
-const getAllCourses = async () => {
+const getAllCourse = async () => {
     try {
-        let courses = await db.Courses.findAll();
-        if (courses) {
+        let course = await db.Course.findAll();
+        if (course) {
             return {
                 EM: 'get data success',
                 EC: 0,
-                DT: courses
+                DT: course
             }
         } else {
             return {
@@ -26,11 +26,11 @@ const getAllCourses = async () => {
     }
 }
 
-const getCoursesWithPagination = async (page, limit) => {
+const getCourseWithPagination = async (page, limit) => {
     try {
         let offset = (page - 1) * limit;
 
-        const { count, rows } = await db.Courses.findAndCountAll({
+        const { count, rows } = await db.Course.findAndCountAll({
             offset: offset,
             limit: limit,
         })
@@ -39,7 +39,7 @@ const getCoursesWithPagination = async (page, limit) => {
         let data = {
             totalRows: count,
             totalPages: totalPages,
-            courses: rows
+            course: rows
         }
 
         return {
@@ -58,17 +58,17 @@ const getCoursesWithPagination = async (page, limit) => {
     }
 }
 
-const createNewCourses = async (data) => {
+const createNewCourse = async (data) => {
     try {
-        await db.Courses.create(data);
+        await db.Course.create(data);
     } catch (e) {
         console.log(e);
     }
 }
 
-const updateCourses = async (data) => {
+const updateCourse = async (data) => {
     try {
-        let user = await db.Courses.findOne({
+        let user = await db.Course.findOne({
             where: { id: data.id }
         })
         if (user) {
@@ -84,22 +84,22 @@ const updateCourses = async (data) => {
     }
 }
 
-const deleteCourses = async (id) => {
+const deleteCourse = async (id) => {
     try {
-        let courses = await db.Courses.findOne({
+        let course = await db.Course.findOne({
             where: { id: id }
         })
 
-        if (courses) {
-            await courses.destroy();
+        if (course) {
+            await course.destroy();
             return {
-                EM: 'Delete courses succeeds',
+                EM: 'Delete course succeeds',
                 EC: 0,
                 DT: []
             }
         } else {
             return {
-                EM: 'Courses not exist',
+                EM: 'Course not exist',
                 EC: 2,
                 DT: data
             }
@@ -116,9 +116,9 @@ const deleteCourses = async (id) => {
 }
 
 module.exports = {
-    getAllCourses,
-    getCoursesWithPagination,
-    createNewCourses,
-    updateCourses,
-    deleteCourses,
+    getAllCourse,
+    getCourseWithPagination,
+    createNewCourse,
+    updateCourse,
+    deleteCourse,
 }
