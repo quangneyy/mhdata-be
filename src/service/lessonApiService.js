@@ -7,7 +7,7 @@ const getAllLesson = async () => {
             return {
                 EM: 'get data success',
                 EC: 0,
-                DT: lesson
+                DT: lesson,
             }
         } else {
             return {
