@@ -9,11 +9,11 @@ const getAllEvaluate = async () => {
                 { model: db.Course, attributes: ["name", "author"] }],
                 // include: { model: db.Course, attributes: ["name", "author"] },
             },
-            {
-                attributes: ["id", "averageRating", "numberReviews", "comments"],
-                // include: { model: db.User, attributes: ["username", "email"] },
-                include: { model: db.Course, attributes: ["name", "author"] },
-            }
+            // {
+            //     attributes: ["id", "averageRating", "numberReviews", "comments"],
+            //     // include: { model: db.User, attributes: ["username", "email"] },
+            //     include: { model: db.Course, attributes: ["name", "author"] },
+            // }
         );
         if (evaluate) {
             return {
