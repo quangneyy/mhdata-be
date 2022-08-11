@@ -1,13 +1,13 @@
 import db from '../models/index';
 
-const getAllFavouriteList = async () => {
+const getAllStorageDetail = async () => {
     try {
-        let favouriteList = await db.FavouriteList.findAll();
-        if (favouriteList) {
+        let storageDetail = await db.StorageDetail.findAll();
+        if (storageDetail) {
             return {
                 EM: 'get data success',
                 EC: 0,
-                DT: favouriteList
+                DT: storageDetail
             }
         } else {
             return {
@@ -26,23 +26,20 @@ const getAllFavouriteList = async () => {
     }
 }
 
-const getFavouriteListWithPagination = async (page, limit) => {
+const getStorageDetailWithPagination = async (page, limit) => {
     try {
         let offset = (page - 1) * limit;
 
-        const { count, rows } = await db.FavouriteList.findAndCountAll({
+        const { count, rows } = await db.StorageDetail.findAndCountAll({
             offset: offset,
             limit: limit,
-            // attributes: ["id", "username", "email", "phone", "sex"],
-            // include: { model: db.Group, attributes: ["name", "description"] },
-            // order: [['name', 'DESC']]
         })
 
         let totalPages = Math.ceil(count / limit);
         let data = {
             totalRows: count,
             totalPages: totalPages,
-            favouriteList: rows
+            storageDetail: rows
         }
 
         return {
@@ -61,30 +58,30 @@ const getFavouriteListWithPagination = async (page, limit) => {
     }
 }
 
-const createNewFavouriteList = async (data) => {
+const createNewStorageDetail = async (data) => {
     try {
-        await db.FavouriteList.create(data);
+        await db.StorageDetail.create(data);
     } catch (e) {
         console.log(e);
     }
 }
 
-const deleteFavouriteList = async (id) => {
+const deleteStorageDetail = async (id) => {
     try {
-        let favouriteList = await db.FavouriteList.findOne({
+        let storageDetail = await db.StorageDetail.findOne({
             where: { id: id }
         })
 
-        if (favouriteList) {
-            await favouriteList.destroy();
+        if (storageDetail) {
+            await storageDetail.destroy();
             return {
-                EM: 'Delete favouriteList succeeds',
+                EM: 'Delete storageDetail succeeds',
                 EC: 0,
                 DT: []
             }
         } else {
             return {
-                EM: 'FavouriteList not exist',
+                EM: 'StorageDetail not exist',
                 EC: 2,
                 DT: data
             }
@@ -101,8 +98,8 @@ const deleteFavouriteList = async (id) => {
 }
 
 module.exports = {
-    getAllFavouriteList,
-    createNewFavouriteList,
-    deleteFavouriteList,
-    getFavouriteListWithPagination,
+    getAllStorageDetail,
+    getStorageDetailWithPagination,
+    createNewStorageDetail,
+    deleteStorageDetail,
 }
