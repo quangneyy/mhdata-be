@@ -5,6 +5,7 @@ import courseController from '../controller/courseController';
 import lessonController from '../controller/lessonController';
 import evaluateController from '../controller/evaluateController';
 import categoryController from '../controller/categoryController';
+import favouriteListController from '../controller/favouriteListController';
 const router = express.Router();
 
 const initApiRoutes = (app) => {
@@ -37,6 +38,10 @@ const initApiRoutes = (app) => {
     router.get("/category/read", categoryController.readFunc);
     router.post("/category/create", categoryController.createFunc);
     router.delete("/category/delete", categoryController.deleteFunc);
+
+    router.get("/favouriteList/read", favouriteListController.readFunc);
+    router.post("/favouriteList/create", favouriteListController.createFunc);
+    router.delete("/favouriteList/delete", favouriteListController.deleteFunc);
 
     return app.use("/api/v1/", router);
 }
