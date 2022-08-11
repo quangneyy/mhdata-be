@@ -3,6 +3,7 @@ import configViewEngine from './config/viewEngine';
 import initWebRoutes from './routes/web';
 import initApiRoutes from './routes/api';
 import configCors from './config/cors';
+import connection from './config/connectDB';
 import { initTables } from './service/initDatabaseService';
 
 require("dotenv").config();
@@ -23,7 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // test connection db 
-// connection();
+connection();
 
 // init web routes
 initWebRoutes(app);
