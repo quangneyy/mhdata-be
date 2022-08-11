@@ -6,7 +6,7 @@ const getAllEvaluate = async () => {
             {
                 attributes: ["id", "averageRating", "numberReviews", "comments"],
                 include: [{ model: db.User, attributes: ["username", "email"] }, 
-                { model: db.Course, attributes: ["name", "author"] }],
+                { model: db.Course, attributes: ["id", "name", "author"] }],
                 // include: { model: db.Course, attributes: ["name", "author"] },
             },
             // {

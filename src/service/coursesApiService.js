@@ -5,7 +5,7 @@ const getAllCourse = async () => {
         let course = await db.Course.findAll(
             {
                 attributes: ["id", "name", "author", "time", "image", "dateUpload"],
-                include: { model: db.Category, attributes: ["name"] },
+                include: { model: db.Category, attributes: ["id", "name"] },
             }
         );
         if (course) {
