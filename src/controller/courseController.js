@@ -1,4 +1,4 @@
-import coursesApiService from '../service/coursesApiService';
+import courseApiService from '../service/coursesApiService';
 
 const readFunc = async (req, res) => {
     try {
@@ -6,14 +6,14 @@ const readFunc = async (req, res) => {
             let page = req.query.page;
             let limit = req.query.limit;
 
-            let data = await coursesApiService.getCoursesWithPagination(+page, +limit);
+            let data = await courseApiService.getCourseWithPagination(+page, +limit);
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code
                 DT: data.DT, //data
             })
         } else {
-            let data = await coursesApiService.getAllCourses();
+            let data = await courseApiService.getAllCourse();
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code
@@ -33,7 +33,7 @@ const readFunc = async (req, res) => {
 const createFunc = async (req, res) => {
     try {
         // validate 
-        let data = await coursesApiService.createNewCourses(req.body);
+        let data = await courseApiService.createNewCourse(req.body);
         return res.status(200).json({
             EM: data.EM, // error message
             EC: data.EC, // error code 
@@ -64,7 +64,7 @@ const updateFunc = (req, res) => {
 
 const deleteFunc = async (req, res) => {
     try {
-        let data = await coursesApiService.deleteCourses(req.body.id);
+        let data = await courseApiService.deleteCourse(req.body.id);
         return res.status(200).json({
             EM: data.EM, // error message
             EC: data.EC, // error code

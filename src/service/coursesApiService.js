@@ -2,7 +2,12 @@ import db from '../models/index';
 
 const getAllCourse = async () => {
     try {
-        let course = await db.Course.findAll();
+        let course = await db.Course.findAll(
+            {
+                attributes: ["id", "name", "author", "time", "image", "dateUpload"],
+                include: { model: db.Category, attributes: ["name"] },
+            }
+        );
         if (course) {
             return {
                 EM: 'get data success',

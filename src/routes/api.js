@@ -1,7 +1,7 @@
 import express from 'express';
 import apiController from '../controller/apiController';
 import userController from '../controller/userController';
-import coursesController from '../controller/coursesController';
+import courseController from '../controller/courseController';
 import lessonController from '../controller/lessonController';
 import evaluateController from '../controller/evaluateController';
 const router = express.Router();
@@ -19,10 +19,10 @@ const initApiRoutes = (app) => {
     router.put("/user/update", userController.updateFunc); 
     router.delete("/user/delete", userController.deleteFunc); 
 
-    router.get("/courses/read", coursesController.readFunc);
-    router.post("/courses/create", coursesController.createFunc);
-    router.put("/courses/update", coursesController.updateFunc);
-    router.delete("/courses/delete", coursesController.deleteFunc);
+    router.get("/course/read", courseController.readFunc);
+    router.post("/course/create", courseController.createFunc);
+    router.put("/course/update", courseController.updateFunc);
+    router.delete("/course/delete", courseController.deleteFunc);
 
     router.get("/lesson/read", lessonController.readFunc);
     router.post("/lesson/create", lessonController.createFunc);
