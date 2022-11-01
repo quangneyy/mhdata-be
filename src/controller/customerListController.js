@@ -1,4 +1,4 @@
-import categoryApiService from '../service/categoryApiService';
+import customerListApiService from '../service/customerListApiService';
 
 const readFunc = async (req, res) => {
     try {
@@ -6,14 +6,14 @@ const readFunc = async (req, res) => {
             let page = req.query.page;
             let limit = req.query.limit;
 
-            let data = await categoryApiService.getAllCategory(+page, +limit);
+            let data = await customerListApiService.getAllCustomerList(+page, +limit);
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code
                 DT: data.DT, //data
             })
         } else {
-            let data = await categoryApiService.getAllCategory();
+            let data = await customerListApiService.getAllCustomerList();
             return res.status(200).json({
                 EM: data.EM, // error message
                 EC: data.EC, // error code
@@ -33,11 +33,14 @@ const readFunc = async (req, res) => {
 const createFunc = async (req, res) => {
     try {
         // validate 
-        let data = await categoryApiService.createNewCategory(req.body);
-        return res.status(200).json({
-            EM: data.EM, // error message
-            EC: data.EC, // error code 
-            DT: data.DT, // data
+        let data = await customerListApiService.createNewCustomerList(req.body);
+        // return res.status(200).json({
+        //     EM: data.EM, // error message
+        //     EC: data.EC, // error code 
+        //     DT: data.DT, // data
+        // })
+        return res.send({
+            data
         })
     } catch (error) {
         console.log(error);
@@ -51,7 +54,7 @@ const createFunc = async (req, res) => {
 
 const deleteFunc = async (req, res) => {
     try {
-        let data = await categoryApiService.deleteCategory(req.body.id);
+        let data = await customerListApiService.deleteCustomerList(req.body.id);
         return res.status(200).json({
             EM: data.EM, // error message
             EC: data.EC, // error code

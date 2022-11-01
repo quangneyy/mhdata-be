@@ -1,8 +1,8 @@
 import db from '../models/index';
 
-const getAllCategory = async () => {
+const getAllCustomerList = async () => {
     try {
-        let category = await db.Category.findAll();
+        let category = await db.CustomerList.findAll();
         if (category) {
             return {
                 EM: 'get data success',
@@ -26,11 +26,11 @@ const getAllCategory = async () => {
     }
 }
 
-const getCategoryWithPagination = async (page, limit) => {
+const getCustomerListWithPagination = async (page, limit) => {
     try {
         let offset = (page - 1) * limit;
 
-        const { count, rows } = await db.Category.findAndCountAll({
+        const { count, rows } = await db.CustomerList.findAndCountAll({
             offset: offset,
             limit: limit,
             // attributes: ["id", "username", "email", "phone", "sex"],
@@ -61,30 +61,30 @@ const getCategoryWithPagination = async (page, limit) => {
     }
 }
 
-const createNewCategory = async (data) => {
+const createNewCustomerList = async (data) => {
     try {
-        await db.Category.create(data);
+        await db.CustomerList.create(data);
     } catch (e) {
         console.log(e);
     }
 }
 
-const deleteCategory = async (id) => {
+const deleteCustomerList = async (id) => {
     try {
-        let category = await db.Category.findOne({
+        let category = await db.CustomerList.findOne({
             where: { id: id }
         })
 
         if (category) {
             await category.destroy();
             return {
-                EM: 'Delete category succeeds',
+                EM: 'Delete CustomerList succeeds',
                 EC: 0,
                 DT: []
             }
         } else {
             return {
-                EM: 'Category not exist',
+                EM: 'CustomerList not exist',
                 EC: 2,
                 DT: data
             }
@@ -101,8 +101,8 @@ const deleteCategory = async (id) => {
 }
 
 module.exports = {
-    getAllCategory,
-    createNewCategory,
-    deleteCategory,
-    getCategoryWithPagination,
+    getAllCustomerList,
+    createNewCustomerList,
+    deleteCustomerList,
+    getCustomerListWithPagination,
 }

@@ -5,6 +5,7 @@ import initApiRoutes from './routes/api';
 import configCors from './config/cors';
 import connection from './config/connectDB';
 import { initTables } from './service/initDatabaseService';
+import cors from 'cors';
 
 require("dotenv").config();
 import bodyParser from 'body-parser';
@@ -13,8 +14,10 @@ import bodyParser from 'body-parser';
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+app.use(cors());
+
 // config cors
-configCors(app);
+// configCors(app);
 
 // config view engine
 configViewEngine(app);
